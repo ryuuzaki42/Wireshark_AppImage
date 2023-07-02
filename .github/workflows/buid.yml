@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    #- name: Dep
-    #  run: sudo apt install fuse libfuse2
+    - name: Dep
+      run: sudo apt install fuse libfuse2
     - name: Get pkg2appimage
       run: |
         curl --location -o pkg2appimage https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
