@@ -1,0 +1,53 @@
+name: Create new realease
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Dep
+      run: sudo apt install fuse libfuse2
+    - name: Construct AppDir
+      run: make
+    - name: Get appimagetool
+      run: |
+        curl --location -o pkg2appimage https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
+        chmod +x pkg2appimage
+    - name: Make AppImage
+      run: ./pkg2appimage Wireshark.yml
+    - name: List files and rename AppImage
+      run: |
+        pwd
+        ls -lah
+        #VERSION=$(cat version)
+        #mv Calibre-x86_64.AppImage "Calibre-$VERSION-x86_64.AppImage"
+        #ls -lah
+
+    #- name: Upload a Build Artifact
+    #  uses: actions/upload-artifact@master
+    #  with:
+    #    name: Calibre-6.22.0-x86_64.AppImage
+    #    path: ./Calibre-6.22.0-x86_64.AppImage
+
+#  Build - Errror: Resource not accessible by integration
+# Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
+# https://github.com/actions/first-interaction/issues/10#issuecomment-1506118886
+
+    #- name: Checkout code
+    #  uses: actions/checkout@v3
+
+#https://github.com/marketplace/actions/upload-to-github-release
+    - uses: xresloader/upload-to-github-release@main
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          #file: "Calibre-6.22.0-x86_64.AppImage"
+          file: "*.AppImage"
+          #delete_file: "random-name-*.txt;random-*.txt"
+          release_id: ${{ steps.create_release.outputs.id }}
+          #overwrite: true
+          verbose: true
+          #tags: true
+          draft: false
