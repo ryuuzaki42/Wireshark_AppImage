@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Dep
+    - name: install fuse and libfuse2
       run: sudo apt install fuse libfuse2
     - name: Get pkg2appimage
       run: |
