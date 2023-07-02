@@ -12,3 +12,4 @@ script:
   #- convert usr/share/icons/hicolor/scalable/apps/wireshark.svg wireshark.png
 
   - cp ./usr/share/icons/hicolor/scalable/apps/org.wireshark.Wireshark.svg .
+  rm -f squashfs-root/usr/lib/libgmodule-2.0.so.0
