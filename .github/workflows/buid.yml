@@ -14,7 +14,7 @@ jobs:
     - name: Get pkg2appimage
       run: |
         #curl --location -o pkg2appimage https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
-        wget https://raw.githubusercontent.com/AppImageCommunity/pkg2appimage/master/pkg2appimage
+        wget https://github.com/AppImage/pkg2appimage/raw/master/pkg2appimage
         chmod +x pkg2appimage
         ls -lah
     - name: Make AppImage
