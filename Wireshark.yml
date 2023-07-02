@@ -12,6 +12,3 @@ script:
   #- convert usr/share/icons/hicolor/scalable/apps/wireshark.svg wireshark.png
 
   - cp ./usr/share/icons/hicolor/scalable/apps/org.wireshark.Wireshark.svg .
-  ls -ahl
-  pwd
-  rm -f squashfs-root/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0
