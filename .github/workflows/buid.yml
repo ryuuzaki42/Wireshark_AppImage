@@ -24,6 +24,8 @@ jobs:
         libgthread-2.0.so.0" >> excludelist
         cat excludelist
 
+        echo "" >> excludelist
+
         ls -lah
     - name: Make AppImage
       run: ./pkg2appimage Wireshark.yml
