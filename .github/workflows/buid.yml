@@ -14,9 +14,12 @@ jobs:
     - name: Get pkg2appimage
       run: |
         curl --location -o pkg2appimage https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
-        #wget https://github.com/AppImage/pkg2appimage/raw/master/pkg2appimage
-        wget https://github.com/AppImage/AppImages/raw/master/excludelist
         chmod +x pkg2appimage
+
+        wget https://github.com/AppImage/AppImages/raw/master/excludelist
+        echo "libgio-2.0.so.0" >> excludelist
+        cat excludelist
+
         ls -lah
     - name: Make AppImage
       run: ./pkg2appimage Wireshark.yml
