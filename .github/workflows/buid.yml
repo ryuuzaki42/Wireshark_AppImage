@@ -4,8 +4,9 @@ on: [push]
 jobs:
   build:
     name: Build
+    #https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
     #runs-on: ubuntu-latest
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@master
     - name: install fuse and libfuse2
@@ -23,7 +24,10 @@ jobs:
         #libgmodule-2.0.so.0
         #libgobject-2.0.so.0
         #libgthread-2.0.so.0" >> excludelist
-        #cat excludelist
+        
+        echo "libgmodule-2.0.so.0" > excludelist
+        cat excludelist
+        
         #echo "" >> excludelist
 
         ls -lah
