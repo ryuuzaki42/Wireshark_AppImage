@@ -5,7 +5,8 @@ jobs:
   build:
     name: Build
     #https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
-    #runs-on: ubuntu-latest # 
+    #runs-on: ubuntu-latest # Not working with  ubuntu-latest /  ubuntu-22.04
+    # Error: /lib/x86_64-linux-gnu/libgio-2.0.so.0: undefined symbol: g_module_open_full
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@master
@@ -25,18 +26,18 @@ jobs:
         #libgobject-2.0.so.0
         #libgthread-2.0.so.0" >> excludelist
         
-        echo "libgmodule-2.0.so.0" > excludelist
-        cat excludelist
+        #echo "libgmodule-2.0.so.0" > excludelist
+        #cat excludelist
         
         #echo "" >> excludelist
 
-        ls -lah
+        ls -lahR
     - name: Make AppImage
       run: ./pkg2appimage Wireshark.yml
-    - name: List files and rename AppImage
-      run: |
-        pwd
-        ls -lah
+    #- name: List files and rename AppImage
+      #run: |
+        #pwd
+        #ls -lah
         #VERSION=$(cat version)
         #mv Calibre-x86_64.AppImage "Calibre-$VERSION-x86_64.AppImage"
         #ls -lah
@@ -59,7 +60,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          file: "/out/Wireshark-*.AppImage"
+          file: "out/Wireshark-*.AppImage"
           #delete_file: "random-name-*.txt;random-*.txt"
           release_id: ${{ steps.create_release.outputs.id }}
           #overwrite: true
