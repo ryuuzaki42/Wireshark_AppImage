@@ -4,7 +4,8 @@ on: [push]
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@master
     - name: install fuse and libfuse2
@@ -16,15 +17,14 @@ jobs:
         curl --location -o pkg2appimage https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
         chmod +x pkg2appimage
 
-        wget https://github.com/AppImage/AppImages/raw/master/excludelist
-        echo "libgio-2.0.so.0
-        libglib-2.0.so.0
-        libgmodule-2.0.so.0
-        libgobject-2.0.so.0
-        libgthread-2.0.so.0" >> excludelist
-        cat excludelist
-
-        echo "" >> excludelist
+        #wget https://github.com/AppImage/AppImages/raw/master/excludelist
+        #echo "libgio-2.0.so.0
+        #libglib-2.0.so.0
+        #libgmodule-2.0.so.0
+        #libgobject-2.0.so.0
+        #libgthread-2.0.so.0" >> excludelist
+        #cat excludelist
+        #echo "" >> excludelist
 
         ls -lah
     - name: Make AppImage
@@ -55,7 +55,6 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          #file: "Calibre-6.22.0-x86_64.AppImage"
           file: "*.AppImage"
           #delete_file: "random-name-*.txt;random-*.txt"
           release_id: ${{ steps.create_release.outputs.id }}
