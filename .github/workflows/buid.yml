@@ -23,6 +23,16 @@ jobs:
     - name: Make AppImage
       run: ./pkg2appimage-1807-x86_64.AppImage Wireshark.yml
 
+    - name: List files and rename AppImage
+      run: |
+        pwd
+        ls -lah
+        fileName=$(ls Wireshark*.AppImage) 
+        echo "fileName: $fileName"
+        fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
+        mv "$fileName" "${fileNameNew}-1_JB.AppImage"
+        ls -lah
+
     # Build - Errror: Resource not accessible by integration
     # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
     # https://github.com/actions/first-interaction/issues/10#issuecomment-1506118886
