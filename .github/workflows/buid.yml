@@ -7,7 +7,7 @@ jobs:
     #https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
     #runs-on: ubuntu-latest # Not working with  ubuntu-latest /  ubuntu-22.04
     # Error: /lib/x86_64-linux-gnu/libgio-2.0.so.0: undefined symbol: g_module_open_full
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@master
     - name: install fuse and libfuse2
@@ -18,44 +18,16 @@ jobs:
       run: |
         curl --location -o pkg2appimage https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
         chmod +x pkg2appimage
+        ls -lah
 
-        #wget https://github.com/AppImage/AppImages/raw/master/excludelist
-        #echo "libgio-2.0.so.0
-        #libglib-2.0.so.0
-        #libgmodule-2.0.so.0
-        #libgobject-2.0.so.0
-        #libgthread-2.0.so.0" >> excludelist
-        
-        #echo "libgmodule-2.0.so.0" > excludelist
-        #cat excludelist
-        
-        #echo "" >> excludelist
-
-        ls -lahR
     - name: Make AppImage
       run: ./pkg2appimage Wireshark.yml
-    #- name: List files and rename AppImage
-      #run: |
-        #pwd
-        #ls -lah
-        #VERSION=$(cat version)
-        #mv Calibre-x86_64.AppImage "Calibre-$VERSION-x86_64.AppImage"
-        #ls -lah
 
-    #- name: Upload a Build Artifact
-    #  uses: actions/upload-artifact@master
-    #  with:
-    #    name: Calibre-6.22.0-x86_64.AppImage
-    #    path: ./Calibre-6.22.0-x86_64.AppImage
+    # Build - Errror: Resource not accessible by integration
+    # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
+    # https://github.com/actions/first-interaction/issues/10#issuecomment-1506118886
 
-#  Build - Errror: Resource not accessible by integration
-# Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
-# https://github.com/actions/first-interaction/issues/10#issuecomment-1506118886
-
-    #- name: Checkout code
-    #  uses: actions/checkout@v3
-
-#https://github.com/marketplace/actions/upload-to-github-release
+    # https://github.com/marketplace/actions/upload-to-github-release
     - uses: xresloader/upload-to-github-release@main
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
