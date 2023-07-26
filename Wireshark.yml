@@ -10,5 +10,9 @@ ingredients:
 script:
   #- sudo apt-get install imagemagick
   #- convert usr/share/icons/hicolor/scalable/apps/wireshark.svg wireshark.png
-
   - cp ./usr/share/icons/hicolor/scalable/apps/org.wireshark.Wireshark.svg .
+  - pwd
+  - ls -lah
+  - ls -lah ../
+  - ls -lah ../../
+  - cp ../../README.md .
