@@ -27,6 +27,7 @@ jobs:
       run: |
         pwd
         ls -lah
+        cd out/
         fileName=$(ls Wireshark*.AppImage) 
         echo "fileName: $fileName"
         fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
