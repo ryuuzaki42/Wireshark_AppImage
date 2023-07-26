@@ -7,21 +7,21 @@ jobs:
     #https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
     #runs-on: ubuntu-latest # Not working with  ubuntu-latest /  ubuntu-22.04
     # Error: /lib/x86_64-linux-gnu/libgio-2.0.so.0: undefined symbol: g_module_open_full
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@master
     - name: install fuse and libfuse2
       run: |
         sudo apt install fuse libfuse2
-        #sudo rm -f /lib/x86_64-linux-gnu/libglib-*
+
     - name: Get pkg2appimage
       run: |
-        curl --location -o pkg2appimage https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
-        chmod +x pkg2appimage
+        wget https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
+        chmod +x pkg2appimage-1807-x86_64.AppImage
         ls -lah
 
     - name: Make AppImage
-      run: ./pkg2appimage Wireshark.yml
+      run: ./pkg2appimage-1807-x86_64.AppImage Wireshark.yml
 
     # Build - Errror: Resource not accessible by integration
     # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
