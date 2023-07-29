@@ -4,12 +4,10 @@ ingredients:
   dist: focal
   sources:
     - deb http://archive.ubuntu.com/ubuntu/ focal main universe
-  #ppas:
-  #  - wireshark-dev/stable
+  ppas:
+    - wireshark-dev/stable
 
 script:
-  #- sudo apt-get install imagemagick
-  #- convert usr/share/icons/hicolor/scalable/apps/wireshark.svg wireshark.png
   - cp ./usr/share/icons/hicolor/scalable/apps/org.wireshark.Wireshark.svg .
   - pwd
   - ls -lah
