@@ -1,14 +1,11 @@
 app: Wireshark
 
 ingredients:
-  #dist: focal
-  #sources:
-  #  - deb http://archive.ubuntu.com/ubuntu/ focal main universe
+  dist: focal
+  sources:
+    - deb http://archive.ubuntu.com/ubuntu/ focal main universe
   #ppas:
   #  - wireshark-dev/stable
-  dist: testing
-  sources:
-    - deb http://ftp.debian.org/debian/ testing main contrib non-free
 
 script:
   #- sudo apt-get install imagemagick
