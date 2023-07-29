@@ -11,20 +11,23 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: install fuse and libfuse2
-      run: |
-        sudo apt install fuse libfuse2
+      run: sudo apt install fuse libfuse2
 
     - name: Get pkg2appimage
       run: |
+        set -x
         wget https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
         chmod +x pkg2appimage-1807-x86_64.AppImage
         ls -lah
 
     - name: Make AppImage
-      run: ./pkg2appimage-1807-x86_64.AppImage Wireshark.yml
+      run:  |
+        set -x
+        ./pkg2appimage-1807-x86_64.AppImage Wireshark.yml
 
     - name: List files and rename AppImage
       run: |
+        set -x
         pwd
         ls -lah
         cd out/
