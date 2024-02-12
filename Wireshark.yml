@@ -8,7 +8,9 @@ ingredients:
     - wireshark-dev/stable
 
 script:
-  - cp ./usr/share/icons/hicolor/scalable/apps/org.wireshark.Wireshark.svg .
+  #- cp ./usr/share/icons/hicolor/scalable/apps/org.wireshark.Wireshark.svg .
+  - wget https://upload.wikimedia.org/wikipedia/commons/d/df/Wireshark_icon.svg -O org.wireshark.Wireshark.svg
+  - find . | grep ".svg"
   - pwd
   - ls -lah
   - ls -lah ../
