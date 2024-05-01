@@ -60,4 +60,4 @@ jobs:
           verbose: true
           #tags: true
           draft: false
-          default_release_name: "Wireshark v in AppImage"
+          default_release_name: "Wireshark V in AppImage"
