@@ -7,7 +7,8 @@
 https://www.wireshark.org/
 
 ---
-http://ppa.launchpad.net/wireshark-dev/stable/ubuntu/pool/main/w/wireshark/?C=N;O=D
+https://www.wireshark.org/download.html
 
 ---
-https://www.wireshark.org/download.html
+http://ppa.launchpad.net/wireshark-dev/stable/ubuntu/pool/main/w/wireshark/?C=N;O=D
+
