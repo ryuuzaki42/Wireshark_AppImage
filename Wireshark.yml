@@ -8,7 +8,8 @@ ingredients:
   ppas:
     - wireshark-dev/stable
   packages:
-    - libnsl
+    - libnsl2
+    - libselinux
 
 script:
   #- cp ./usr/share/icons/hicolor/scalable/apps/org.wireshark.Wireshark.svg .
