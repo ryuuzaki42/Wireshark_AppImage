@@ -7,12 +7,16 @@ ingredients:
     - deb http://archive.ubuntu.com/ubuntu/ focal main universe
   ppas:
     - wireshark-dev/stable
-  packages:
-    - libnsl2
-    - libselinux
+  #packages:
+  #  - libnsl2
+  #  - libselinux
 
 script:
   #- cp ./usr/share/icons/hicolor/scalable/apps/org.wireshark.Wireshark.svg .
+  - set -x
+  = pwd
+  - ls -lah
+  - cp $(readlink -f /lib/x86_64-linux-gnu/libnsl.so.1) ./appdir/usr/lib/libnsl.so.1
   - wget https://upload.wikimedia.org/wikipedia/commons/d/df/Wireshark_icon.svg -O org.wireshark.Wireshark.svg
   - find . | grep ".svg"
   - pwd
