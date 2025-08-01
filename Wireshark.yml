@@ -1,5 +1,5 @@
 app: Wireshark
-# Version: 4.4.7
+# Version: 4.4.8
 
 ingredients:
   dist: focal
