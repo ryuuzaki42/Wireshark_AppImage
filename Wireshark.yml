@@ -2,11 +2,12 @@ app: Wireshark
 # Test 4.6.0
 
 ingredients:
-  dist: focal
+  #dist: focal
+  dist: jammy
   sources:
     #- deb http://archive.ubuntu.com/ubuntu/ focal main universe
-    #- deb http://archive.ubuntu.com/ubuntu/ jammy main universe
-    - deb http://archive.ubuntu.com/ubuntu/ noble main universe
+    - deb http://archive.ubuntu.com/ubuntu/ jammy main universe
+    #- deb http://archive.ubuntu.com/ubuntu/ noble main universe
   ppas:
     - wireshark-dev/stable
   #packages:
