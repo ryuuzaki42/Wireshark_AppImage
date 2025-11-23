@@ -1,5 +1,5 @@
 app: Wireshark
-# Test 4.6.0
+# Test 4.6.1
 
 ingredients:
   #dist: focal # Ubuntu 20.04 LTS
