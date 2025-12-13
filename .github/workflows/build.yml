@@ -1,4 +1,4 @@
-name: Create new realease
+name: Create new release
 
 on:
   push:
