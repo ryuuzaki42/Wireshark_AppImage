@@ -2,11 +2,11 @@ app: Wireshark
 # Test 4.6.2 - test
 
 ingredients:
-  #dist: focal # Ubuntu 20.04 LTS
-  dist: jammy # Ubuntu 22.04 LTS
+  dist: focal # Ubuntu 20.04 LTS
+  #dist: jammy # Ubuntu 22.04 LTS
   sources:
-    #- deb http://archive.ubuntu.com/ubuntu/ focal main universe
-    - deb http://archive.ubuntu.com/ubuntu/ jammy main universe
+    - deb http://archive.ubuntu.com/ubuntu/ focal main universe
+    #- deb http://archive.ubuntu.com/ubuntu/ jammy main universe
   ppas:
     - wireshark-dev/stable
   #packages:
