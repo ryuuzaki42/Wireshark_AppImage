@@ -1,6 +1,10 @@
 
 # Wireshark_AppImage
 
+Wireshark is a powerful, open-source network protocol analyzer that allows users to capture and interactively browse the traffic running on a computer network.
+
+https://www.wireshark.org/
+
 ## Repository: https://github.com/ryuuzaki42/Wireshark_AppImage
 
 ---
@@ -18,8 +22,6 @@
     kdesu ./Wireshark-*-1_JB.AppImage
 
 ---
-https://www.wireshark.org/
-
 https://www.wireshark.org/download.html
 
 ---
