@@ -14,8 +14,9 @@ jobs:
     #runs-on: ubuntu-latest # Not working with  ubuntu-latest /  ubuntu-22.04
     # Error: /lib/x86_64-linux-gnu/libgio-2.0.so.0: undefined symbol: g_module_open_full
     runs-on: ubuntu-22.04
+
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v6
     - name: install fuse and libfuse2
       run: sudo apt install fuse libfuse2
 
@@ -25,7 +26,7 @@ jobs:
         #wget https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage--x86_64.AppImage
         wget https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1eceb30-x86_64.AppImage -O pkg2appimage-x86_64.AppImage
         chmod +x pkg2appimage-x86_64.AppImage
-        ls -lah
+        pwd; ls -lah
 
     - name: Make AppImage
       run:  |
@@ -35,30 +36,22 @@ jobs:
     - name: List files and rename AppImage
       run: |
         set -x
-        pwd
-        ls -lah
         cd out/
+        pwd; ls -lah
+
         fileName=$(ls Wireshark*.AppImage) 
         echo "fileName: $fileName"
         fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
         mv "$fileName" "${fileNameNew}-1_JB.AppImage"
         md5sum "${fileNameNew}-1_JB.AppImage" > "${fileNameNew}-1_JB.AppImage.md5"
-        ls -lah
+        pwd; ls -lah
 
-    # Build - Errror: Resource not accessible by integration
-    # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
-    # https://github.com/actions/first-interaction/issues/10#issuecomment-1506118886
-
-    # https://github.com/marketplace/actions/upload-to-github-release
-    - uses: xresloader/upload-to-github-release@main
+    - uses: xresloader/upload-to-github-release@v1
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
           file: "out/Wireshark-*.AppImage; out/Wireshark-*.md5"
-          #delete_file: "random-name-*.txt;random-*.txt"
-          release_id: ${{ steps.create_release.outputs.id }}
           #overwrite: true
           verbose: true
-          #tags: true
           draft: false
           default_release_name: "Wireshark V in AppImage"
