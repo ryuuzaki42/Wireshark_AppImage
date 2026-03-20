@@ -11,7 +11,7 @@ jobs:
   build:
     name: Build
     #https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
-    #runs-on: ubuntu-latest # Not working with  ubuntu-latest /  ubuntu-22.04
+    #runs-on: ubuntu-latest # Not working with ubuntu-latest / ubuntu-22.04
     # Error: /lib/x86_64-linux-gnu/libgio-2.0.so.0: undefined symbol: g_module_open_full
     runs-on: ubuntu-22.04
 
@@ -29,7 +29,7 @@ jobs:
         pwd; ls -lah
 
     - name: Make AppImage
-      run:  |
+      run: |
         set -x
         ./pkg2appimage-x86_64.AppImage Wireshark.yml
 
@@ -67,9 +67,6 @@ jobs:
 
         fileName=$(ls Wireshark*.AppImage) 
         echo "fileName: $fileName"
-        #fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
-        #mv "$fileName" "${fileNameNew}-1_JB.AppImage"
-        #md5sum "${fileNameNew}-1_JB.AppImage" > "${fileNameNew}-1_JB.AppImage.md5"
         md5sum "${fileName}" > "${fileName}.md5"
         pwd; ls -lah
 
