@@ -33,6 +33,31 @@ jobs:
         set -x
         ./pkg2appimage-x86_64.AppImage Wireshark.yml
 
+    - name: Get appimagetool
+      run: |
+        #wget -q -c "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
+        version_go_appimage=$(wget -q -O - https://api.github.com/repos/probonopd/go-appimage/releases | grep "\"name.*appimagetool-.*-x86_64.AppImage\"" | head -n 1 | cut -d '-' -f2)
+        echo "version_go_appimage: $version_go_appimage"
+        wget -q "https://github.com/probonopd/go-appimage/releases/download/continuous/appimagetool-$version_go_appimage-x86_64.AppImage" -O appimagetool-x86_64.AppImage
+        chmod +x appimagetool-x86_64.AppImage
+
+    - name: Extract AppImage and rebuilt to remove need of libfuse.so.2
+      run: |
+        set -x
+        cd out/
+        pwd; ls -lah
+
+        fileName=$(ls Wireshark*.AppImage)
+        chmod +x "$fileName"
+        ./"$fileName" --appimage-extract
+        rm Wireshark*.AppImage
+        pwd; ls -lah
+
+        version="2222"
+
+        ARCH=x86_64 VERSION="${version}-1_JB" ./appimagetool-x86_64.AppImage squashfs-root/
+        pwd; ls -lah
+
     - name: List files and rename AppImage
       run: |
         set -x
