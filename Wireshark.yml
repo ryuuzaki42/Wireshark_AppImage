@@ -1,5 +1,5 @@
 app: Wireshark
-# Test 4.6.3 - test
+# Test 4.6.4 - test
 
 ingredients:
   #dist: focal # Ubuntu 20.04 LTS
@@ -21,7 +21,7 @@ script:
   #- cp $(readlink -f /lib/x86_64-linux-gnu/libnsl.so.1) ./appdir/usr/lib/libnsl.so.1
   - cp $(readlink -f /lib/x86_64-linux-gnu/libnsl.so.1) lib/libnsl.so.1
   - wget https://upload.wikimedia.org/wikipedia/commons/d/df/Wireshark_icon.svg -O org.wireshark.Wireshark.svg
-  - find . | grep ".svg"
+  #- find . | grep ".svg"
   - pwd
   - ls -lah
   - ls -lah ../
