@@ -54,20 +54,10 @@ jobs:
         pwd; ls -lah
 
         mv ../appimagetool-x86_64.AppImage .
-        version=$(echo "fileName" | cut -d '-' -f2 | cut -d '.' -f1-3)
+        version=$(echo "$fileName" | cut -d '-' -f2 | cut -d '.' -f1-3)
 
         ARCH=x86_64 VERSION="${version}-1_JB" ./appimagetool-x86_64.AppImage squashfs-root/
         pwd; ls -lah
-
-    - name: Get URUNTIME
-      run: |
-        set -x
-        wget -q https://github.com/VHSgunzo/uruntime/releases/latest/download/uruntime-appimage-dwarfs-x86_64 -O uruntime
-        chmod +x uruntime
-        pwd; ls -lah
-
-    - name: Install llvm - URUNTIME
-      run: sudo apt install llvm
 
     - name: List files and rename AppImage
       run: |
@@ -75,15 +65,12 @@ jobs:
         cd out/
         pwd; ls -lah
 
-        mv ../uruntime ./
-        echo "Generating zsync file..."
-        zsyncmake *.AppImage -u *.AppImage
-
         fileName=$(ls Wireshark*.AppImage) 
         echo "fileName: $fileName"
-        fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
-        mv "$fileName" "${fileNameNew}-1_JB.AppImage"
-        md5sum "${fileNameNew}-1_JB.AppImage" > "${fileNameNew}-1_JB.AppImage.md5"
+        #fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
+        #mv "$fileName" "${fileNameNew}-1_JB.AppImage"
+        #md5sum "${fileNameNew}-1_JB.AppImage" > "${fileNameNew}-1_JB.AppImage.md5"
+        md5sum "${fileName}" > "${fileName}.md5"
         pwd; ls -lah
 
     - uses: xresloader/upload-to-github-release@v1
