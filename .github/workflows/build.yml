@@ -23,8 +23,8 @@ jobs:
     - name: Get pkg2appimage
       run: |
         set -x
-        #wget https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage--x86_64.AppImage
-        wget https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1eceb30-x86_64.AppImage -O pkg2appimage-x86_64.AppImage
+        #wget -q https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage--x86_64.AppImage
+        wget -q https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1eceb30-x86_64.AppImage -O pkg2appimage-x86_64.AppImage
         chmod +x pkg2appimage-x86_64.AppImage
         pwd; ls -lah
 
@@ -53,7 +53,8 @@ jobs:
         rm Wireshark*.AppImage
         pwd; ls -lah
 
-        version="222"
+        mv ../appimagetool-x86_64.AppImage .
+        version=$(echo "fileName" | cut -d '-' -f2 | cut -d '.' -f1-3)
 
         ARCH=x86_64 VERSION="${version}-1_JB" ./appimagetool-x86_64.AppImage squashfs-root/
         pwd; ls -lah
