@@ -59,11 +59,25 @@ jobs:
         ARCH=x86_64 VERSION="${version}-1_JB" ./appimagetool-x86_64.AppImage squashfs-root/
         pwd; ls -lah
 
+    - name: Get URUNTIME
+      run: |
+        set -x
+        wget -q https://github.com/VHSgunzo/uruntime/releases/latest/download/uruntime-appimage-dwarfs-x86_64 -O uruntime
+        chmod +x uruntime
+        pwd; ls -lah
+
+    - name: Install llvm - URUNTIME
+      run: sudo apt install llvm
+
     - name: List files and rename AppImage
       run: |
         set -x
         cd out/
         pwd; ls -lah
+
+        mv ../uruntime ./
+        echo "Generating zsync file..."
+        zsyncmake *.AppImage -u *.AppImage
 
         fileName=$(ls Wireshark*.AppImage) 
         echo "fileName: $fileName"
@@ -76,7 +90,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          file: "out/Wireshark-*.AppImage; out/Wireshark-*.md5"
+          file: "out/Wireshark-*.AppImage; out/Wireshark-*.zsync; out/Wireshark-*.md5"
           #overwrite: true
           verbose: true
           draft: false
