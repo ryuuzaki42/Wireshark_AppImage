@@ -1,7 +1,7 @@
 
 # Wireshark_AppImage
 
-Wireshark is a powerful, open-source network protocol analyzer that allows users to capture and interactively browse the traffic running on a computer network.
+Wireshark is a powerful, open-source network protocol analyzer that allows users to capture and interactively browse the traffic running on a computer network
 
 https://www.wireshark.org/
 
@@ -13,13 +13,13 @@ https://www.wireshark.org/
 
 #### Run it as root:
     su
-    ./Wireshark-*-1_JB.AppImage
+    ./Wireshark-*_JB-x86_64.AppImage
 
 ##### Or:
-    sudo ./Wireshark-*-1_JB.AppImage
+    sudo ./Wireshark-*_JB-x86_64.AppImage
 
 ##### If use KDE:
-    kdesu ./Wireshark-*-1_JB.AppImage
+    kdesu ./Wireshark-*_JB-x86_64.AppImage
 
 ---
 https://www.wireshark.org/download.html
