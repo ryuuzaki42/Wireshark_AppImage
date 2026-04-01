@@ -8,17 +8,17 @@ https://www.wireshark.org/
 ## Repository: https://github.com/ryuuzaki42/Wireshark_AppImage
 
 ---
-### If got the error:
+## If got the error
     You do not have permission to capture on device ... (socket: Operation not permitted)
 
-#### Run it as root:
+### Run it as root
     su
     ./Wireshark-*_JB-x86_64.AppImage
 
-##### Or:
+### Or
     sudo ./Wireshark-*_JB-x86_64.AppImage
 
-##### If use KDE:
+### If use KDE
     kdesu ./Wireshark-*_JB-x86_64.AppImage
 
 ---
