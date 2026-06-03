@@ -1,3 +1,4 @@
+
 name: Create new release
 
 on:
@@ -10,10 +11,11 @@ on:
 jobs:
   build:
     name: Build
-    #https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
-    #runs-on: ubuntu-latest # Not working with ubuntu-latest / ubuntu-22.04
+    # https://github.com/actions/runner-images
+    #runs-on: ubuntu-latest # Not working with ubuntu-latest
     # Error: /lib/x86_64-linux-gnu/libgio-2.0.so.0: undefined symbol: g_module_open_full
-    runs-on: ubuntu-22.04
+    #runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
     - uses: actions/checkout@v6
